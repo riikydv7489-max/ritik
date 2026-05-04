@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ritik Yadav — Social Media Strategist</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0d0d0d;
+    --paper: #f7f4ef;
+    --cream: #ede8df;
+    --accent: #c8491a;
+    --accent2: #1a3c5e;
+    --muted: #7a7670;
+    --white: #ffffff;
+    --card-bg: #ffffff;
+    --border: rgba(13,13,13,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(247,244,239,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--muted);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 50%; height: 100%;
+    background: var(--cream);
+    z-index: 0;
+  }
+  .hero-text { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 32px; height: 1.5px;
+    background: var(--accent);
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  h1 span { color: var(--accent); }
+  .hero-tagline {
+    font-size: 1.05rem; font-weight: 300; color: var(--muted);
+    margin-bottom: 2.5rem; max-width: 420px; line-height: 1.7;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    padding: 0.85rem 2rem; border-radius: 2px;
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: #a83a14; transform: translateY(-2px); }
+  .btn-ghost {
+    border: 1.5px solid var(--ink); color: var(--ink);
+    padding: 0.85rem 2rem; border-radius: 2px;
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+
+  .hero-right {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; align-items: center; gap: 2rem;
+  }
+  .photo-frame {
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--cream) 0%, #d6cfc3 100%);
+    border: 4px solid var(--white);
+    outline: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(13,13,13,0.12);
+  }
+  .photo-initials {
+    font-family: 'Syne', sans-serif;
+    font-size: 4rem; font-weight: 800; color: var(--muted);
+    letter-spacing: -0.04em;
+  }
+  .hero-stats {
+    display: flex; gap: 2.5rem;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem; font-weight: 800; color: var(--ink);
+    display: block; line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); margin-top: 0.3rem;
+  }
+  .contact-chips {
+    display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center;
+  }
+  .chip {
+    font-size: 0.75rem; padding: 0.35rem 0.9rem;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 999px; color: var(--muted); white-space: nowrap;
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-label::after {
+    content: ''; flex: 1; max-width: 60px; height: 1.5px;
+    background: var(--accent);
+  }
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800; letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 3rem;
+  }
+
+  /* ABOUT */
+  .about { background: var(--ink); color: var(--paper); }
+  .about .section-label { color: #e8a080; }
+  .about .section-label::after { background: #e8a080; }
+  .about h2 { color: var(--paper); }
+  .about-grid {
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 5rem; align-items: center;
+  }
+  .about-text { font-size: 1.1rem; font-weight: 300; line-height: 1.85; color: #c8c2b8; }
+  .about-text strong { color: var(--paper); font-weight: 500; }
+  .about-highlights { display: flex; flex-direction: column; gap: 1.5rem; }
+  .highlight-item {
+    border-left: 2px solid #e8a080;
+    padding-left: 1.2rem;
+  }
+  .highlight-item strong {
+    font-family: 'Syne', sans-serif; font-weight: 700;
+    font-size: 1.5rem; display: block; color: var(--paper);
+  }
+  .highlight-item span { font-size: 0.8rem; color: #8a8480; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* SKILLS */
+  .skills-grid {
+    display: flex; flex-wrap: wrap; gap: 0.75rem;
+  }
+  .skill-pill {
+    padding: 0.6rem 1.2rem;
+    background: var(--white); border: 1.5px solid var(--border);
+    border-radius: 2px;
+    font-size: 0.82rem; font-weight: 500; color: var(--ink);
+    transition: all 0.2s; cursor: default;
+    position: relative; overflow: hidden;
+  }
+  .skill-pill::before {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px; background: var(--accent);
+    transition: width 0.3s;
+  }
+  .skill-pill:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .skill-pill:hover::before { width: 100%; }
+  .skill-pill.highlight-skill {
+    background: var(--accent); border-color: var(--accent);
+    color: #fff;
+  }
+  .skill-pill.highlight-skill::before { background: rgba(255,255,255,0.4); }
+
+  /* EXPERIENCE */
+  .exp-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 2px; padding: 2.5rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .exp-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(13,13,13,0.1); }
+  .exp-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 4px; background: var(--accent);
+  }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  .exp-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .exp-date {
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--white); background: var(--accent);
+    padding: 0.3rem 0.8rem; border-radius: 1px; white-space: nowrap;
+  }
+  .exp-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .exp-list li {
+    font-size: 0.92rem; color: #444; padding-left: 1.2rem; position: relative;
+  }
+  .exp-list li::before {
+    content: '→'; position: absolute; left: 0; color: var(--accent);
+    font-size: 0.75rem; top: 0.2rem;
+  }
+
+  /* CLIENTS */
+  .clients { background: var(--cream); }
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.2rem;
+  }
+  .client-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 2px; padding: 1.5rem 1rem;
+    text-align: center; transition: all 0.2s;
+    display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+  }
+  .client-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(13,13,13,0.1); border-color: var(--accent); }
+  .client-logo {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--cream); display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem;
+    color: var(--accent2); border: 1px solid var(--border);
+  }
+  .client-name { font-weight: 600; font-size: 0.9rem; letter-spacing: 0.02em; }
+  .client-type { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .client-link {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent;
+    transition: border-color 0.2s; display: flex; align-items: center; gap: 0.3rem;
+  }
+  .client-link:hover { border-color: var(--accent); }
+
+  /* LEADERSHIP */
+  .leadership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .lead-card {
+    background: var(--white); border: 1px solid var(--border); border-radius: 2px;
+    padding: 2rem; transition: all 0.2s; position: relative; overflow: hidden;
+  }
+  .lead-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(13,13,13,0.1); }
+  .lead-card::after {
+    content: attr(data-num);
+    position: absolute; right: 1rem; top: 0.5rem;
+    font-family: 'Syne', sans-serif; font-size: 4rem; font-weight: 800;
+    color: rgba(13,13,13,0.04); line-height: 1;
+  }
+  .lead-org {
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--accent); margin-bottom: 0.4rem; font-weight: 500;
+  }
+  .lead-title { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; }
+  .lead-points { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .lead-points li { font-size: 0.85rem; color: #555; padding-left: 1rem; position: relative; }
+  .lead-points li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
+
+  /* EDUCATION */
+  .edu { background: var(--ink); color: var(--paper); }
+  .edu .section-label { color: #e8a080; }
+  .edu .section-label::after { background: #e8a080; }
+  .edu h2 { color: var(--paper); }
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .edu-card {
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 2px;
+    padding: 2rem; transition: border-color 0.2s;
+  }
+  .edu-card:hover { border-color: #e8a080; }
+  .edu-degree { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .edu-school { color: #c8c2b8; font-size: 0.92rem; margin-bottom: 0.8rem; }
+  .edu-date { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: #e8a080; }
+  .edu-detail { font-size: 0.82rem; color: #8a8480; margin-top: 0.8rem; line-height: 1.6; }
+
+  /* CERTS & SOCIETIES */
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
+  .cert-card {
+    background: var(--white); border: 1px solid var(--border); border-radius: 2px;
+    padding: 1.5rem; transition: all 0.2s;
+  }
+  .cert-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(13,13,13,0.08); border-color: var(--accent); }
+  .cert-icon { font-size: 1.5rem; margin-bottom: 0.8rem; display: block; }
+  .cert-name { font-weight: 600; font-size: 0.92rem; margin-bottom: 0.3rem; }
+  .cert-issuer { font-size: 0.78rem; color: var(--muted); }
+
+  /* CTA */
+  .cta {
+    background: var(--accent); color: var(--white);
+    text-align: center; padding: 6rem 4rem;
+  }
+  .cta h2 { color: var(--white); font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 1rem; }
+  .cta p { font-size: 1.1rem; font-weight: 300; opacity: 0.85; margin-bottom: 2.5rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .cta-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .btn-white {
+    background: var(--white); color: var(--accent);
+    padding: 1rem 2.5rem; border-radius: 2px;
+    font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-white:hover { background: var(--ink); color: var(--white); transform: translateY(-2px); }
+  .btn-outline-white {
+    border: 1.5px solid rgba(255,255,255,0.6); color: var(--white);
+    padding: 1rem 2.5rem; border-radius: 2px;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background: #080808; color: #555;
+    text-align: center; padding: 2rem;
+    font-size: 0.78rem; letter-spacing: 0.06em;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px; background: var(--border); margin: 0 4rem;
+  }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
+    .hero::before { display: none; }
+    .hero-right { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .divider { margin: 0 1.5rem; }
+    .cta { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">RY.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Available for Internships</div>
+    <h1>Ritik<br><span>Yadav</span></h1>
+    <p class="hero-tagline">Social Media Strategist · Content Creator · Brand Partnerships Manager</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Let's Connect</a>
+      <a href="#experience" class="btn-ghost">View Work</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="photo-frame">
+      <span class="photo-initials">RY</span>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">9+</span>
+        <span class="stat-label">Brands</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">30%</span>
+        <span class="stat-label">Engagement↑</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">20+</span>
+        <span class="stat-label">Team Led</span>
+      </div>
+    </div>
+    <div class="contact-chips">
+      <span class="chip">📍 New Delhi</span>
+      <a href="mailto:ritikydv7905@gmail.com" class="chip" style="text-decoration:none;color:inherit;">✉️ ritikydv7905@gmail.com</a>
+      <a href="tel:+919671790016" class="chip" style="text-decoration:none;color:inherit;">📞 +91-9671790016</a>
+      <a href="https://www.linkedin.com/in/ritik-yadav-b262a4380" target="_blank" class="chip" style="text-decoration:none;color:inherit;">🔗 LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div>
+      <div class="section-label reveal">About Me</div>
+      <h2 class="reveal">Building brands,<br>one post at a time.</h2>
+      <p class="about-text reveal">
+        I'm a first-year <strong>BBE (Hons.) student at the University of Delhi</strong> with real-world experience in social media strategy, influencer marketing, and brand partnerships. I've managed content for creators, negotiated with major brands, and led media teams — all before my second year of college.
+        <br><br>
+        From growing Instagram engagement to coordinating brand ambassador deals with <strong>VIVO and CONVERSE</strong>, I bring a blend of strategy, creativity, and execution that most profiles can't offer.
+      </p>
+    </div>
+    <div class="about-highlights reveal">
+      <div class="highlight-item">
+        <strong>9+</strong>
+        <span>Brand Collaborations Executed</span>
+      </div>
+      <div class="highlight-item">
+        <strong>30%</strong>
+        <span>Avg. Engagement Growth Delivered</span>
+      </div>
+      <div class="highlight-item">
+        <strong>20</strong>
+        <span>Member Media Team Led at DUSU</span>
+      </div>
+      <div class="highlight-item">
+        <strong>3</strong>
+        <span>Leadership Roles Held Simultaneously</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label reveal">What I Do</div>
+  <h2 class="reveal">Skills &amp; Expertise</h2>
+  <div class="skills-grid reveal">
+    <span class="skill-pill highlight-skill">Social Media Strategy</span>
+    <span class="skill-pill highlight-skill">Influencer Marketing</span>
+    <span class="skill-pill highlight-skill">Brand Partnerships</span>
+    <span class="skill-pill highlight-skill">Reel / Short-Form Content</span>
+    <span class="skill-pill">Content Writing &amp; Copywriting</span>
+    <span class="skill-pill">SEO</span>
+    <span class="skill-pill">Photography</span>
+    <span class="skill-pill">Videography</span>
+    <span class="skill-pill">Video Editing</span>
+    <span class="skill-pill">Multi-Platform Marketing</span>
+    <span class="skill-pill">Instagram Growth Strategy</span>
+    <span class="skill-pill">Market Research</span>
+    <span class="skill-pill">Data Analysis &amp; Interpretation</span>
+    <span class="skill-pill">Business Development</span>
+    <span class="skill-pill">Online Reputation Management</span>
+    <span class="skill-pill">Strategic Planning</span>
+    <span class="skill-pill">Audience Engagement</span>
+    <span class="skill-pill">Content Calendar Management</span>
+    <span class="skill-pill">Sponsor Outreach &amp; Negotiation</span>
+    <span class="skill-pill">Google Ads (AI-Powered)</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label reveal">Work History</div>
+  <h2 class="reveal">Professional Experience</h2>
+  <div class="exp-card reveal">
+    <div class="exp-header">
+      <div>
+        <div class="exp-title">Social Media &amp; Brand Partnerships Manager</div>
+        <div style="font-size:0.85rem;color:var(--muted);margin-top:0.2rem;">Freelance · Remote</div>
+      </div>
+      <span class="exp-date">Aug 2025 – Dec 2025</span>
+    </div>
+    <ul class="exp-list">
+      <li>Managed full Instagram content strategy — posting schedule, creative direction, and audience engagement — for a content creator with a rapidly growing follower base.</li>
+      <li>Coordinated and executed brand collaborations with <strong>COMET, LUDIC, The LazyBUN, Odd India, Everdion, Lotte Sports,</strong> and <strong>Funk Vibes</strong> — handling briefs, timelines, and deliverables end-to-end.</li>
+      <li>Managed brand ambassador partnerships with <strong>VIVO</strong> and <strong>CONVERSE</strong>, ensuring on-brand, timely content delivery and maintaining long-term brand relationships.</li>
+      <li>Developed engagement strategies that contributed to measurable follower and interaction growth across all platforms.</li>
+    </ul>
+    <div style="margin-top:1.8rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+      <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:0.9rem;font-weight:500;">Creators Managed</div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.8rem;">
+        <a href="https://www.instagram.com/heyimobaid" target="_blank" style="display:flex;align-items:center;gap:0.6rem;padding:0.6rem 1.1rem;background:var(--paper);border:1.5px solid var(--border);border-radius:2px;text-decoration:none;color:var(--ink);font-size:0.85rem;font-weight:500;transition:all 0.2s;" onmouseover="this.style.borderColor='#c8491a';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8491a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#c8491a" stroke="none"/></svg>
+          @heyimobaid ↗
+        </a>
+        <a href="https://www.instagram.com/luvvpradeep" target="_blank" style="display:flex;align-items:center;gap:0.6rem;padding:0.6rem 1.1rem;background:var(--paper);border:1.5px solid var(--border);border-radius:2px;text-decoration:none;color:var(--ink);font-size:0.85rem;font-weight:500;transition:all 0.2s;" onmouseover="this.style.borderColor='#c8491a';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8491a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#c8491a" stroke="none"/></svg>
+          @luvvpradeep ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section class="clients" id="clients">
+  <div class="section-label reveal">Portfolio</div>
+  <h2 class="reveal">Brands I've Worked With</h2>
+  <div class="clients-grid reveal">
+
+    <div class="client-card">
+      <div class="client-logo">VI</div>
+      <div class="client-name">VIVO</div>
+      <div class="client-type">Brand Ambassador</div>
+      <a href="#" class="client-link">instagram ↗</a>
+    </div>
+
+    <div class="client-card">
+      <div class="client-logo">CO</div>
+      <div class="client-name">CONVERSE</div>
+      <div class="client-type">Brand Ambassador</div>
+      <a href="#" class="client-link">instagram ↗</a>
+    </div>
+
+    <div class="client-card">
+      <div class="client-logo">CM</div>
+      <div class="client-name">COMET</div>
+      <div class="client-type">Brand Collab</div>
+      <a href="#" class="client-link">instagram ↗</a>
+    </div>
+
+    <div class="client-card">
+      <div class="client-logo">LU</div>
+      <div class="client-name">LUDIC</div>
+      <div class="client-type">Brand Collab</div>
+      <a href="#" class="client-link">instagram ↗</a>
+    </div>
+
+    <div class="client-card">
+      <div class="client-logo">LB</div>
+      <div class="client-name">The LazyBUN</div>
+      <div class="client-type">Brand Collab</div>
+      <a href="#" class="client-link">instagram ↗</a>
+    </div>
+
+    <div class="client-card">
+      <div class="client-logo">OI</div>
+      <div class="client-name">Odd India</div>
+      <div class="client-type">Brand Collab</div>
+      <a href="#" class="client-link">instagram ↗</a>
+    </div>
+
+    <div class="client-card">
+      <div class="client-logo">EV</div>
+      <div class="client-name">Everdion</div>
+      <div class="client-type">Brand Collab</div>
+      <a href="#" class="client-link">instagram ↗</a>
+    </div>
+
+    <div class="client-card">
+      <div class="client-logo">LS</div>
+      <div class="client-name">Lotte Sports</div>
+      <div class="client-type">Brand Collab</div>
+      <a href="#" class="client-link">instagram ↗</a>
+    </div>
+
+    <div class="client-card">
+      <div class="client-logo">FV</div>
+      <div class="client-name">Funk Vibes</div>
+      <div class="client-type">Brand Collab</div>
+      <a href="#" class="client-link">instagram ↗</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <div class="section-label reveal">Campus Impact</div>
+  <h2 class="reveal">Leadership Roles</h2>
+  <div class="leadership-grid">
+
+    <div class="lead-card reveal" data-num="01">
+      <div class="lead-org">DUSU · University of Delhi</div>
+      <div class="lead-title">Media President</div>
+      <ul class="lead-points">
+        <li>Led and managed a media team of 20+ members</li>
+        <li>Directed social campaigns on Instagram, Facebook, LinkedIn &amp; YouTube</li>
+        <li>Increased engagement by 30% across all platforms</li>
+        <li>Developed content calendars for consistent messaging</li>
+      </ul>
+    </div>
+
+    <div class="lead-card reveal" data-num="02">
+      <div class="lead-org">DUSU · University of Delhi</div>
+      <div class="lead-title">Cultural President</div>
+      <ul class="lead-points">
+        <li>Led university-level cultural events &amp; initiatives</li>
+        <li>Coordinated cross-functional teams &amp; external stakeholders</li>
+        <li>Oversaw end-to-end event planning, logistics &amp; promotions</li>
+      </ul>
+    </div>
+
+    <div class="lead-card reveal" data-num="03">
+      <div class="lead-org">TATVA College Fest</div>
+      <div class="lead-title">Sponsors Head</div>
+      <ul class="lead-points">
+        <li>Led sponsorship acquisition &amp; brand partnerships for the fest</li>
+        <li>Negotiated deals from outreach to closure</li>
+        <li>Coordinated sponsor deliverables across departments</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="edu" id="education">
+  <div class="section-label reveal">Background</div>
+  <h2 class="reveal">Education</h2>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-degree">Bachelor of Business Economics (Hons.)</div>
+      <div class="edu-school">University of Delhi</div>
+      <div class="edu-date">Aug 2025 – Jun 2028</div>
+      <div class="edu-detail">Major in Business Economics — Consumer Behaviour, Macroeconomics, Financial Markets &amp; Institutions, Business Law. Comprehensive projects analysing business strategies of leading companies.</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-degree">Senior Secondary &amp; Secondary (CBSE)</div>
+      <div class="edu-school">Anand School for Excellence, Bhiwani, Haryana</div>
+      <div class="edu-date">Apr 2018 – Jun 2023</div>
+      <div class="edu-detail">Class 12 &amp; Class 10, Central Board of Secondary Education.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS + SOCIETIES -->
+<section id="certifications">
+  <div class="section-label reveal">Credentials</div>
+  <h2 class="reveal">Certifications &amp; Societies</h2>
+  <div class="cert-grid reveal">
+    <div class="cert-card">
+      <span class="cert-icon">🎓</span>
+      <div class="cert-name">Google AI-Powered Performance Ads</div>
+      <div class="cert-issuer">Google Skillshop · Certified</div>
+    </div>
+    <div class="cert-card">
+      <span class="cert-icon">🇫🇷</span>
+      <div class="cert-name">French Language — A1 Level (DELF)</div>
+      <div class="cert-issuer">Alliance Française · Certified</div>
+    </div>
+    <div class="cert-card">
+      <span class="cert-icon">💼</span>
+      <div class="cert-name">TEB — E-Cell of CVS</div>
+      <div class="cert-issuer">Entrepreneurship &amp; Business Society</div>
+    </div>
+    <div class="cert-card">
+      <span class="cert-icon">🎬</span>
+      <div class="cert-name">ZEPHYR</div>
+      <div class="cert-issuer">Film &amp; Photography Society of CVS</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <h2 class="reveal">Open to Opportunities</h2>
+  <p class="reveal">Looking for internships in social media management, content creation, and digital marketing. Let's build something great together.</p>
+  <div class="cta-btns reveal">
+    <a href="mailto:ritikydv7905@gmail.com" class="btn-white">📧 Email Me</a>
+    <a href="https://www.linkedin.com/in/ritik-yadav-b262a4380" target="_blank" class="btn-outline-white">LinkedIn Profile ↗</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Ritik Yadav · Malaviya Nagar, New Delhi · <a href="tel:+919671790016" style="color:#555;text-decoration:none;">+91-9671790016</a> · <a href="mailto:ritikydv7905@gmail.com" style="color:#555;text-decoration:none;">ritikydv7905@gmail.com</a> · <a href="https://www.linkedin.com/in/ritik-yadav-b262a4380" target="_blank" style="color:#555;text-decoration:none;">LinkedIn</a></p>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(r => io.observe(r));
+</script>
+</body>
+</html>
